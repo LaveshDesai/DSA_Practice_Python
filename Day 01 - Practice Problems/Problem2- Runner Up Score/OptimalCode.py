@@ -12,6 +12,3 @@ for num in arr:
     second = num
 
 print(second)
-
-
-    
