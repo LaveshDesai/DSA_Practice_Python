@@ -20,38 +20,38 @@ class Solution:
 
         rev *= sign
 
-        if rev < -2**31 or***v > 2**31 - 1:
-            retur* 0
+        if rev < -2**31 or rev > 2**31 - 1:
+            return 0
 
         return rev
 ```
 
-### Ex*mple
+### Example
 
 ```python
 Input:    120
-Outp*t:   21
+Output:   21
 Expected: 21
 ```
 
-### Why *t Works
+### Why it Works
 
-In each iteration, the la*t digit is extracted using `% 10` *nd added to the reversed number. T*e original number is reduced using*`// 10` until no digits remain. Fi*ally, the sign and 32-bit integer *onstraints are handled.
+In each iteration, the last digit is extracted using `% 10` and added to the reversed number. The original number is reduced using `// 10` until no digits remain. Finally, the sign and 32-bit integer constraints are handled.
 
-### Compl*xity
+### Complexity
 
-- **Time Complexity: O(log n*** → The loop runs once for each d*git in the number.
-- **Space Compl*xity: O(1)** → Only constant extra*variables are used.
+- **Time Complexity: O(log n)** → The loop runs once for each digit in the number.
+- **Space Complexity: O(1)** → Only constant extra variables are used.
 
-### Compariso*
+### Comparison
 
-| Approach | Time Complexity | S*ace Complexity |
-|-----------|----*-----------|------------------|
-| *tring Reversal | O(n) | O(n) |
-| M*thematical Reversal | O(log n) | O*1) |
+| Approach | Time Complexity | Space Complexity |
+|-----------|----------------|------------------|
+| String Reversal | O(n) | O(n) |
+| Mathematical Reversal | O(log n) | O(1) |
 
 ### Key Learning
 
-- Reversin* an integer mathematically is more*efficient than using string conver*ion.
-- The number of digits in an *nteger is `log₁₀(n)`, which gives the optimal time complexity of **O(log n)**.
+- Reversing an integer mathematically is more efficient than using string conversion.
+- The number of digits in an integer is `log₁₀(n)`, which gives the optimal time complexity of **O(log n)**.
 - This is the preferred interview solution because it uses constant extra space.
