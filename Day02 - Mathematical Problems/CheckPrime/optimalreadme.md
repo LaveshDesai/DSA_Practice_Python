@@ -7,19 +7,27 @@ In this approach, I only check divisors up to the square root of the number.
 ### Code
 
 ```python
+
 class Solution:
-    def checkPrime(self, n: int) -> bool:
-        if n <= 1:
+    def checkPrime(self,n:int)->bool:
+        if n<=1: #it will check negative,0 and 1
             return False
-
-        i = 2
-
+        if n ==2:
+            return True
+        if n%2==0:
+            return False
+        
+        i =3
+        
         while i * i <= n:
             if n % i == 0:
                 return False
             i += 1
 
         return True
+        
+        
+        
 ```
 
 ### Example
