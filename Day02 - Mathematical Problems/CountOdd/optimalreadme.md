@@ -41,7 +41,7 @@ I extract the last digit using `% 10`, check if it is odd, and remove the last d
 
 ### Complexity
 
-- **Time Complexity: O(log n)** → The loop runs once for each digit in the number.
+- **Time Complexity: O(log n)** → The loop runs once for each digit in the number. It doesn't runs proportional to value of n it runs as count of digits in n. Thats why O(log n) represents digits in a number.
 - **Space Complexity: O(1)** → Only a few variables are used.
 
 ### Interview Follow-up Questions
