@@ -1,8 +1,8 @@
-# 3Sum Problem - Brute Force Approach
+# 3Sum - Brute Force Approach
 
 ## Problem Statement
 
-Given an integer array `nums`, find all unique triplets:
+Given an integer array `nums`, return all unique triplets:
 
 ```python
 [nums[i], nums[j], nums[k]]
@@ -22,23 +22,21 @@ and
 nums[i] + nums[j] + nums[k] == 0
 ```
 
-The result should not contain duplicate triplets.
+The solution must not contain duplicate triplets.
 
 ---
 
 ## Brute Force Idea
 
-The simplest way is to check every possible triplet in the array.
+The simplest approach is to generate all possible triplets and check whether their sum is equal to `0`.
 
-Use:
+We use three nested loops:
 
-- First loop for the first element.
-- Second loop for the second element.
-- Third loop for the third element.
-
-For every triplet, check whether the sum is equal to `0`.
-
-If the sum is `0`, store the triplet while avoiding duplicates.
+- The first loop selects the first element.
+- The second loop selects the second element.
+- The third loop selects the third element.
+- If the sum of the three elements is `0`, we store the triplet.
+- A set can be used to avoid duplicate triplets.
 
 ---
 
@@ -46,9 +44,10 @@ If the sum is `0`, store the triplet while avoiding duplicates.
 
 ```python
 ans = set()
+n = len(nums)
 
-for i in range(n):
-    for j in range(i + 1, n):
+for i in range(n - 2):
+    for j in range(i + 1, n - 1):
         for k in range(j + 1, n):
             if nums[i] + nums[j] + nums[k] == 0:
                 temp = sorted([nums[i], nums[j], nums[k]])
@@ -56,6 +55,42 @@ for i in range(n):
 
 print(list(ans))
 ```
+
+---
+
+## Why Do We Use `n-2`, `n-1`, and `n`?
+
+### First Loop
+
+```python
+for i in range(n - 2):
+```
+
+After selecting `i`, we still need two more elements (`j` and `k`) to form a triplet.
+
+Therefore, `i` must stop at `n-3`.
+
+---
+
+### Second Loop
+
+```python
+for j in range(i + 1, n - 1):
+```
+
+After selecting `j`, we still need one more element (`k`).
+
+Therefore, `j` must stop at `n-2`.
+
+---
+
+### Third Loop
+
+```python
+for k in range(j + 1, n):
+```
+
+`k` is the last element of the triplet, so it can go up to the last index (`n-1`).
 
 ---
 
@@ -102,10 +137,10 @@ n × n × n = n³
 
 ## Why Is O(n³) Too Slow?
 
-According to the constraints:
+The constraint is:
 
 ```text
-n <= 3000
+1 <= nums.length <= 3000
 ```
 
 For:
@@ -114,7 +149,7 @@ For:
 n = 3000
 ```
 
-Number of operations:
+The number of operations can be approximately:
 
 ```text
 3000 × 3000 × 3000
@@ -122,7 +157,7 @@ Number of operations:
 = 27 Billion
 ```
 
-Checking 27 billion combinations takes too much time and will usually cause a **Time Limit Exceeded (TLE)** error.
+Checking 27 billion combinations is extremely slow and will usually result in a **Time Limit Exceeded (TLE)** error.
 
 ---
 
@@ -134,22 +169,22 @@ O(1)
 
 Ignoring the output storage.
 
-If duplicate handling uses a set:
+If a set is used to store unique triplets:
 
 ```text
 O(k)
 ```
 
-where `k` is the number of unique triplets stored.
+where `k` is the number of unique triplets.
 
 ---
 
-## Drawback of Brute Force
+## Drawbacks of the Brute Force Approach
 
 - Uses three nested loops.
 - Checks many unnecessary combinations.
-- Very slow for large inputs.
-- Fails for the maximum constraint due to `O(n³)` complexity.
+- Performs poorly for large inputs.
+- Causes Time Limit Exceeded (TLE) for the maximum constraint.
 
 ---
 
@@ -168,4 +203,4 @@ Space Complexity: O(1)
 
 ## Interview Answer
 
-The brute force solution uses three nested loops to check every possible triplet, resulting in a time complexity of **O(n³)**. For the maximum constraint `n = 3000`, it may perform up to **27 billion operations**, which is too slow and can lead to a **Time Limit Exceeded (TLE)** error. Therefore, an optimized **O(n²)** solution using sorting and the Two Pointer technique is preferred.
+The brute force approach uses three nested loops to check every possible triplet. Its time complexity is **O(n³)**. For the maximum constraint `n = 3000`, it may require checking approximately **27 billion combinations**, which is too slow and can lead to a **Time Limit Exceeded (TLE)** error. Therefore, the optimized solution uses sorting and the Two Pointer technique, reducing the complexity to **O(n²)**.
