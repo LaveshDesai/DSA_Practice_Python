@@ -270,27 +270,6 @@ Ignoring the output array.
 
 ---
 
-## Why Is This Better?
-
-For:
-
-```text
-n = 3000
-```
-
-### Brute Force
-
-```text
-3000³
-= 27 Billion Operations
-```
-
-### Optimal
-
-```text
-3000²
-= 9 Million Operations
-```
 
 The optimal solution performs dramatically fewer operations and easily passes the constraints.
 
