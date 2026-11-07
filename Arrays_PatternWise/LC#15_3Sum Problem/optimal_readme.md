@@ -278,3 +278,42 @@ The optimal solution performs dramatically fewer operations and easily passes th
 ## Interview Answer
 
 The optimal solution first sorts the array and then fixes one element at a time. For the remaining part of the array, it uses the Two Pointer technique to find pairs whose sum equals the negative of the fixed element. Since each element is processed once with two pointers, the overall time complexity becomes **O(n²)** instead of **O(n³)**. Duplicate values are skipped to ensure that only unique triplets are returned.
+
+
+
+
+
+
+
+
+Comparison of Space Complexity Better vs Optimal
+
+## Space Complexity Comparison
+
+### Better Approach (HashSet)
+
+```text
+Space Complexity: O(n)
+```
+
+**Reason:**
+
+The better approach uses a HashSet (`seen`) to store previously visited elements. In the worst case, the HashSet can contain up to `n` elements, so the extra space used grows with the input size.
+
+---
+
+### Optimal Approach (Sorting + Two Pointers)
+
+```text
+Space Complexity: O(1)
+```
+
+**Reason:**
+
+The optimal approach only uses a few variables (`i`, `j`, `k`, and `total`) and does not require any extra data structure such as a HashSet or HashMap. Since the extra memory remains constant regardless of input size, the space complexity is `O(1)`.
+
+---
+
+### Interview Answer
+
+The HashSet approach requires **O(n)** extra space because it stores elements in a HashSet during each iteration. The Two Pointer approach requires only a few variables and no additional data structure, so its extra space complexity is **O(1)**. This is why the Two Pointer solution is considered more optimal.
