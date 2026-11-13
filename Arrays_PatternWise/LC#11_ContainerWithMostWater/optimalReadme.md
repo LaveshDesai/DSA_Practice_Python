@@ -67,7 +67,7 @@ class Solution:
 
             maxWater = max(area, maxWater)
 
-            if height[i] < height[j]:
+            if height[i] <=  height[j]:
                 i += 1
             else:
                 j -= 1
